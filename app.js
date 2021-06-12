@@ -8,7 +8,6 @@ const weatherAPI = {
 
 const searchInputBox= document.getElementById('input-box');
 
-// Event listener function on keypress
 searchInputBox.addEventListener('keypress',(event)=>{
     
     if(event.keyCode ===13){
@@ -18,15 +17,18 @@ searchInputBox.addEventListener('keypress',(event)=>{
     }
 });
 
-// get weather report
-function getWeatherReport(city){
-    fetch(`${weatherAPI.baseUrl}?q=${city}&appid=${weatherAPI.key}&units=metric`)
-    .then(weather => {
-        return weather.json();
-    }).then(showWeatherReport);
+function errorHandler(error){
+    console.log(error);
+    alert("Error with the server. Please check your input or try again later");
+}
+function getWeatherReport(city) {
+    fetch(
+      `${weatherAPI.baseUrl}?q=${city}&appid=${weatherAPI.key}&units=metric`)
+      .then(resp=>resp.json())
+      .then(showWeatherReport)
+      .catch(errorHandler);
 }
 
-// show weather report
 function showWeatherReport (weather){
     console.log(weather);
 
@@ -40,41 +42,11 @@ function showWeatherReport (weather){
     minMaxtemp.innerHTML = `${Math.floor(weather.main.temp_min)}&deg;C (min) / ${Math.ceil(weather.main.temp_max)}&deg;C (max) `;
 
     let weatherType= document.getElementById('weather');
-    weatherType.innerText = `${weather.weather[0].main}`;
+    weatherType.innerText = `${weather.weather[0].main} ${weather.weather[0].icon} `;
 
     let date= document.getElementById('date');
     let todayDate = new Date();
     date.innerText= dateManage(todayDate);
-
-  /*  if(weatherType.textContent === 'Clear'){
-        document.body.style.backgroundImage = "url('images/Clear.jpg')";
-    }
-    else if(weatherType.textContent === 'Clouds'){
-        document.body.style.backgroundImage = "url('images/Clouds.jpg')";
-    }
-    else if(weatherType.textContent === 'Rain'){
-        document.body.style.backgroundImage = "url('images/Rain.jpg')";
-    }
-    else if(weatherType.textContent === 'Snow'){
-        document.body.style.backgroundImage = "url('images/snow.jpg')";
-    }
-    else if(weatherType.textContent === 'Sunny'){
-        document.body.style.backgroundImage = "url('images/sunny.jpg')";
-    }
-    else if(weatherType.textContent === 'Thunderstorm'){
-        document.body.style.backgroundImage = "url('images/Thunderstorm.jpg')";
-    }
-    else if(weatherType.textContent === 'Mist'){
-        document.body.style.backgroundImage = "url('images/mist.jpg')";
-    }
-    else if(weatherType.textContent === 'Haze'){
-        document.body.style.backgroundImage = "url('images/haze.jpg')";
-    }
-    else if(weatherType.textContent === 'Drizzle'){
-        document.body.style.backgroundImage = "url('images/drizzle.jpg')";
-    }*/
-
-    document.body.style.backgroundImage = ("url('images/" + weatherType.textContent + ".jpg')");
 }
 
 // Date manage
