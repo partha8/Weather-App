@@ -1,69 +1,94 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+:root {
+  --font-color: #222;
+  --bg-color: #f2f3f7;
+  --button-bg-color: #f2f3f7;
+  --button-shadow: -6px -6px 8px rgba(255, 255, 255, 0.9),
+    5px 5px 8px rgba(0, 0, 0, 0.07);
+}
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 body {
-    background-color: rgba(73, 81, 156, 0.986);
-    height: 100vh;
-    font-family: Arial, Helvetica, sans-serif;
+  background-color: #f2f2f2;
+  height: 100vh;
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--font-color);
 }
-header{
-    color: white;
-    text-align: center;
-    padding: 1rem;
-    font-size: 1.5rem;
-    box-sizing: border-box;
-    box-shadow: 0px 5px 20px 10px rgba(20, 43, 109, 0.26);
+.app-main {
+  background-color: var(--bg-color);
+  border-radius: 40px;
+  width: 400px;
+  padding: 1.5rem;
+  box-shadow: -4px -4px 8px 0px #ffffff, 5px 5px 10px 0px rgba(0, 0, 0, 0.25);
+  text-align: center;
 }
-.app-main{
-    width: 50vh;
-    margin: 5rem auto;
-    background-color: rgba(240,248,255,0.6);
-    text-align: center;
-    padding: 1.2rem;
+
+.app-heading {
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 1rem;
 }
 
 .searchInputBox {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
-.input-box{
-    width: 100%;
-    background-color: rgba(255, 253, 253,0.6);
-    border: none;
-    outline: none;
-    font-size: 1.2rem;
-    height: 2rem;
-    border-radius: 10px;
-    padding: 0 10px;
-    text-align: center;
+.input-box {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 1.2rem;
+  height: 2rem;
+  border-radius: 10px;
+  padding: 0 10px;
+  text-align: center;
+  letter-spacing: 1px;
+  box-shadow: inset 2px 2px 4px #d1d9e6, inset -2px -2px 4px #f9f9f9;
 }
 
-.weather-body{
-    display: none;
-    padding: 1rem;
-    line-height: 2rem;
-    border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.6);
-    height: 50vh;
+.button-submit {
+  width: 100px;
+  height: 30px;
+  border-radius: 25px;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1.15px;
+  background-color: #4b70e2;
+  color: #f9f9f9;
+  box-shadow: 8px 8px 16px #d1d9e6, -8px -8px 16px #f9f9f9;
+  border: none;
+  outline: none;
 }
 
-.location-details{
-    font-weight: bold;
+.weather-body {
+  padding: 1rem;
+  line-height: 2rem;
+  border-radius: 10px;
+  height: 50vh;
 }
 
-.weather-status{
-    padding: 20px;
+.location-details {
+  font-weight: bold;
 }
 
-.temp{
-    font-family: cursive;
-    font-size: 5rem;
-    margin: 2rem;
+.weather-status {
+  padding: 20px;
 }
 
-.min-max, .weather {
-    font-size: 1.2rem;
-    font-weight: 600;
+.temp {
+  font-family: cursive;
+  font-size: 5rem;
+  margin: 2rem;
+}
+
+.min-max,
+.weather {
+  font-size: 1.2rem;
+  font-weight: 600;
 }

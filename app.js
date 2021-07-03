@@ -6,12 +6,14 @@ const weatherAPI = {
 };
 
 const searchInputBox = document.getElementById("input-box");
+const submitButton = document.getElementById('button-submit')
 
 searchInputBox.addEventListener("keypress", (event) => {
   if (event.keyCode === 13) {
     getWeatherReport(searchInputBox.value);
   }
 });
+submitButton.addEventListener('click', ()=>getWeatherReport(searchInputBox.value));
 
 function errorHandler(error) {
   console.log(error);
@@ -39,7 +41,7 @@ function showWeatherReport(weather) {
   )}&deg;C (min) / ${Math.ceil(weather.main.temp_max)}&deg;C (max) `;
 
   let weatherType = document.getElementById("weather");
-  weatherType.innerText = `${weather.weather[0].main} ${weather.weather[0].icon} `;
+  weatherType.innerText = `${weather.weather[0].main} `;
 
   let date = document.getElementById("date");
   let todayDate = new Date();
@@ -79,3 +81,4 @@ function dateManage(dateArg) {
 
   return `${date} ${month} (${day}), ${year}`;
 }
+getWeatherReport('Delhi');
